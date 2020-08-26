@@ -1,0 +1,1 @@
+class No<T>(var valor: T, var proximo: No<T>?)
