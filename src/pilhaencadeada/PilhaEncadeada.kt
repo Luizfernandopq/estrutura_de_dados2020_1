@@ -1,7 +1,7 @@
 package pilhaencadeada
 import No
 
-class Pilha<T>() : TADPilhaEncadeada<T> {
+class PilhaEncadeada<T>() : TADPilhaEncadeada<T> {
     private var cabeca: No<T>? = null
 
 

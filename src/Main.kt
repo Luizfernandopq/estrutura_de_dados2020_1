@@ -1,65 +1,70 @@
-import filaencadeada.Fila
-import filaencadeada.TADFilaEncadeada
+import alocacao_estatica.ListaEstatica
+import alocacao_estatica.TADListaEstatica
 import listaencadeada.ListaEncadeada
-import listaencadeada.TADListaEncadeada
-import pilhaencadeada.Pilha
-import pilhaencadeada.TADPilhaEncadeada
 
 fun main(){
-    
-
-
-
-
     /*
-    * teste para Lista Encadeada
+    * teste para Lista Estatica
     * */
-//    val lista: TADListaEncadeada<Any> = ListaEncadeada()
-//    lista.insereFinal("um")
-//    lista.insereInicio("dois")
-//    lista.inserePosicao(3,0)
-//    lista.inserePosicao(4,-1)
-//    lista.inserePosicao(5,3)
-//    lista.insereInicio(6)
-//
-//    lista.removeFinal()
-//    lista.removeInicio()
-//    lista.removePosicao(0)
-//    lista.removePosicao(2)
-//    lista.removePosicao(1)
+    testeListaEstatica()
 
+
+    println("\n")
     /*
-    * teste para Fila Encadeada
+    * teste para Lista Encadeada String
     * */
-//    val fila: TADFilaEncadeada<Int> = Fila<Int>()
-//    fila.imprimeFila()
-//    fila.insereFinal(10)
-//    fila.imprimeFila()
-//    fila.insereFinal(20)
-//    fila.imprimeFila()
-//    fila.insereFinal(32)
-//    fila.imprimeFila()
-//    fila.insereFinal(12)
-//    fila.imprimeFila()
-//    println("\n ${fila.removeInicio()} \n")
-//    fila.imprimeFila()
+    testaListaEncadeadaStr()
 
+
+    println("\n")
     /*
-    * teste para Pilha Encadeada
+    * teste para Lista Encadeada Int
     * */
-//    val pilha: TADPilhaEncadeada<Any> = Pilha()
-//    pilha.imprimePilha()
-//    pilha.insertTopo("dez")
-//    pilha.imprimePilha()
-//    pilha.insertTopo(2)
-//    pilha.imprimePilha()
-//    pilha.insertTopo(20)
-//    pilha.imprimePilha()
-//    pilha.removeTopo()
-//    pilha.imprimePilha()
-//    pilha.removeTopo()
-//    pilha.imprimePilha()
+    testaListaEncadeadaInt()
 
 
+}
+fun testeListaEstatica(){
+    println("teste da Lista Estática \n")
+    val lista: TADListaEstatica<Int> = ListaEstatica(5)
+    lista.set(0, 1)
+    lista.addPrimeiro(10)
+    lista.addUltimo(0)
+    lista.addAntes(3, 7)
+    lista.addDepois(3, 4)
+    lista.addPrimeiro(20)
+    lista.remove(1)
+    lista.removePosicao(3)
+    println("valores ->" + " first=" + lista.first() +  " -> last="
+            + lista.last() + " -> anterior a 2="
+            + lista.anterior(2) + " -> posterior a 1="
+            + lista.posterior(1))
+}
+
+fun testaListaEncadeadaInt(){
+    println("teste da Lista Encadeada com números \n")
+    val listaInt: ListaEncadeada<Int> = ListaEncadeada()
+    listaInt.insereOrdenando(3)
+    listaInt.insereOrdenando(2)
+    listaInt.insereOrdenando(5)
+    listaInt.insereOrdenando(4)
+    listaInt.insereOrdenando(1)
+}
+
+fun testaListaEncadeadaStr(){
+    println("teste da Lista Encadeada com Strings \n")
+    val listaStr: ListaEncadeada<String> = ListaEncadeada()
+    listaStr.insereFinal("um")
+    listaStr.insereInicio("dois")
+    listaStr.inserePosicao("3",0)
+    listaStr.inserePosicao("4",-1)
+    listaStr.inserePosicao("5",3)
+    listaStr.insereInicio("6")
+    listaStr.insereInicio("s")
+    listaStr.insereInicio("mu")
+    listaStr.removeFinal()
+    listaStr.removeInicio()
+    listaStr.removePosicao(2)
+    listaStr.removeString('m')
 
 }

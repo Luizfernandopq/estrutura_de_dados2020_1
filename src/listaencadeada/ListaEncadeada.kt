@@ -46,6 +46,44 @@ class ListaEncadeada<T> : TADListaEncadeada<T> {
         tamanho++
         imprimeLista()
     }
+    fun insereOrdenando(valor: T){
+        val newNo = No(valor, null)
+        when {
+            isListaVazia() -> {
+                cabeca = No(valor, null)
+                tamanho++
+                imprimeLista()
+                return
+            }
+            cabeca!!.valor.toString().toInt() > valor.toString().toInt() -> {
+                newNo.proximo = cabeca
+                cabeca = newNo
+                tamanho++
+                imprimeLista()
+                return
+            }
+            cabeca!!.proximo == null -> {
+                cabeca!!.proximo = newNo
+                tamanho++
+                imprimeLista()
+                return
+            }
+            else -> {
+                var noAux = cabeca
+                while (noAux!!.proximo!!.valor.toString().toInt() < valor.toString().toInt()) {
+                    noAux = noAux.proximo
+                    if (noAux!!.proximo == null) {
+                        break
+                    }
+                }
+                newNo.proximo = noAux.proximo
+                noAux.proximo = newNo
+                tamanho++
+                imprimeLista()
+                return
+            }
+        }
+    }
 
     fun pegaCauda(): No<T>? {
         if (isListaVazia())
@@ -146,4 +184,21 @@ class ListaEncadeada<T> : TADListaEncadeada<T> {
         println("tamanho = ${tamanho}")
     }
 
+    fun removeString(char: Char){
+        var aux = cabeca
+        var posicao = 0
+        while (aux!!.proximo != null){
+            if (aux.valor is String && char in aux.valor.toString()){
+                removePosicao(posicao)
+                return removeString(char)
+            }
+            posicao++
+            aux = aux.proximo
+        }
+        if (aux.valor is String && char in aux.valor.toString()){
+            removePosicao(posicao)
+        }
+    }
+
 }
+

@@ -1,7 +1,7 @@
 package filaencadeada
 import No
 
-class Fila<T>() : TADFilaEncadeada<T> {
+class FilaEncadeada<T>() : TADFilaEncadeada<T> {
     private var cabeca : No<T>? = null
 
     companion object{
